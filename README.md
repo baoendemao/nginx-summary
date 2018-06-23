@@ -21,4 +21,4 @@
     * /var/log/nginx   => nginx log
     * /usr/sbin/nginx   => which nginx
 
-
+* [常用配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)

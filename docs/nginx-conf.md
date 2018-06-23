@@ -26,60 +26,31 @@
     ```
     
 * set $api_url
-* 逻辑控制语句 if等
+
+* 逻辑控制语句 
+    * if
+    * 没有else
+    * 没有&&
+
+* server块中常用的匹配
+    * ~  大小写匹配
+    * !~  区分大小写不匹配
+
+    * =   等于，严格匹配， location = xxx
+    * !=  不等于，严格匹配
+    * ~*  不区分大小写匹配
+    * !~* 不区分大小写不匹配
+    *  \* 任意字符
+    * -f和!-f 判断是否存在文件
+    * -d和!-d 判断是否存在目录
+    * -e和!-e 判断是否存在文件或目录
+    * -x和!-x 判断文件是否可执行
 
 * location{} => location块对应一个站点的路由 => 一个站点可以有多个location
-    * location匹配规则
+    * location匹配规则遵从上面的server块的匹配规则
         * 例如： location ~ ^/list.html {}
-        * 遵从正则匹配
-            * 
-                ```
-                location \ {
-                    root xxxx
-                }
-                ```
-            * location = xxx
-                * 等于
-            * ~
-                * 大小写匹配
     * proxy_pass
         * proxy_pass用来设置反向代理
-        * 例子：
-            * 例子一 proxy_pass到http:
-                ```
-                server { 
-                    listen 12800; 
-                    server_name www.xxx.com; 
-                    location / { 
-                        proxy_pass http://www.yyy.com; 
-                    } 
-                }
-        
-                ``` 
-            * 例子二 root到目录
-                ```
-                server { 
-                    listen 12800; 
-                    server_name www.xxx.com; 
-                    location / { 
-                        root   /var/www/www.xxx.com;
-                        index  index.html index.htm;
-                    } 
-                }
-        
-                ```
-            * 例子三 设置api代理，防止跨域（也可以通过webpack的devServer配置来设置proxy /api）
-                ```
-                server { 
-                    listen 12800; 
-                    server_name www.xxx.com; 
-                    set $api_url http://api.xxx.com;
-                    location /api/ { 
-                        proxy_pass  $api_url;
-                    }
-                }
-        
-                ```
     * root
         * root用来设置静态目录
     * random_index on|off
@@ -90,7 +61,30 @@
                 random_index on;
             } 
         ```
+
 #### nginx的变量
+* $host =>  请求Host
+* $args => 请求行中的参数
+* $content_type => 请求头中的Content-Type
+* $content_length => 请求中的content-length
+* $remote_addr => 客户端的IP地址
+* $remote_port => 客户端的端口号
+* $remote_user => 已经经过Auth Basic Module验证的用户名
+* $server_name => 服务器名称。
+* $server_port => 服务器端口号
+* $server_addr => 服务器的地址，通常在一次调用后可以确定，若需要避开系统调用，可以在listen中指出地址，并且使用参数bind
+* $server_protocol => 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
+* $http_user_agent => 客户端agent信息，相当于navigator.userAgent
+* $http_referer => 网页来源, 相当于document.referer
+* $uri => 不带请求参数的当前URI，$uri不包含主机名
+* $document_uri => 和$uri相同
+* $document_root => 当前请求在root指令中指定的值
+* $request_uri => 带有请求参数的uri，不包含主机名，相当于location.pathname和location.search
+* $http_cookie => 客户端cookie信息。等于js中的document.cookie
+* $scheme => http方法，比如http或者https，相当于location.protocol
+* $request_method => 客户端请求的动作，通常为GET或POST
+* $limit_rate => 限制连接速率
+* $request_filename => 请求的文件路径，由root或alias指令与URI请求生成
 
 #### error_log 
 * nginx的错误日志，默认为/var/log/nginx/error.log  
@@ -139,4 +133,12 @@ upstream xxxname {
     server ip2:12801;
     server ip3:12802;
 }
+```
+
+#### http迁移到https
+```
+    location / {
+        return 302 https://$host$request_uri;
+    }
+
 ```

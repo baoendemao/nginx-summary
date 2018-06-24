@@ -15,10 +15,14 @@
     include /etc/nginx/conf.d/*.conf    
     ```
 
-#### server{} => server块对应一个站点的服务
-* listen 端口号
-* server_name 域名
-    * 默认值是localhost。设置访问的域名，多个用空格分开。如www.xxx.com www.yyy.com。
+#### server{} => server块对应一个站点的服务 => 一个server块是一个虚拟主机 => 在一台机器上配置多个虚拟主机，只需要配置多个server块
+* listen 监听的ip和端口号，也可以只写端口号
+* server_name 主机名称
+    * 基于ip的虚拟主机
+    * 基于域名的虚拟主机
+        * 默认值是localhost。设置访问的域名，多个用空格分开。如www.xxx.com www.yyy.com。
+        * 多个域名共享同一个ip地址，有效解决ip地址不足的问题
+    * 基于端口的虚拟主机
 * error_page
     * 错误页面
     ```
@@ -33,7 +37,7 @@
     * 没有&&
 
 * server块中常用的匹配
-    * ~  大小写匹配
+    * ~  区分大小写匹配
     * !~  区分大小写不匹配
 
     * =   等于，严格匹配， location = xxx
@@ -49,10 +53,23 @@
 * location{} => location块对应一个站点的路由 => 一个站点可以有多个location
     * location匹配规则遵从上面的server块的匹配规则
         * 例如： location ~ ^/list.html {}
+            * 区分大小写匹配
+        * 例如: location = / {}
+            * 只匹配/
+        * 例如： location / {}
+            * 匹配任何以/开头的查询
     * proxy_pass
         * proxy_pass用来设置反向代理
     * root
         * root用来设置静态目录
+        * 例如: 
+        ```
+            # 请求uri地址是/file/aa.png将会返回文件/var/www/www.xxx.com/file/aa.png
+            location /file/ {
+                root /var/www/www.xxx.com
+            }
+
+        ```
     * random_index on|off
         ```
             location / { 
@@ -63,28 +80,35 @@
         ```
 
 #### nginx的变量
-* $host =>  请求Host
+* $host =>  请求Host，如果客户端请求头中没有host，那么这个变量等于为当前请求提供服务的服务器的名称
 * $args => 请求行中的参数
+* $is_args => 如果$args已经设置，则该变量的值为"?"，否则为""
+* $query_string => 和$args类似
 * $content_type => 请求头中的Content-Type
 * $content_length => 请求中的content-length
 * $remote_addr => 客户端的IP地址
+* $binary_remote_addr => 二进制格式的客户端地址
 * $remote_port => 客户端的端口号
-* $remote_user => 已经经过Auth Basic Module验证的用户名
-* $server_name => 服务器名称。
+* $remote_user => 已经经过Auth Basic Module验证的用户名，Auth Basic模块中会用到该变量
+* $server_name => 服务器名称
 * $server_port => 服务器端口号
 * $server_addr => 服务器的地址，通常在一次调用后可以确定，若需要避开系统调用，可以在listen中指出地址，并且使用参数bind
 * $server_protocol => 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
-* $http_user_agent => 客户端agent信息，相当于navigator.userAgent
-* $http_referer => 网页来源, 相当于document.referer
 * $uri => 不带请求参数的当前URI，$uri不包含主机名
 * $document_uri => 和$uri相同
 * $document_root => 当前请求在root指令中指定的值
-* $request_uri => 带有请求参数的uri，不包含主机名，相当于location.pathname和location.search
-* $http_cookie => 客户端cookie信息。等于js中的document.cookie
+* $http_cookie => 客户端请求header头中的cookie信息。等于js中的document.cookie
+* $http_变量名 => 客户端请求header头中的变量，如$http_referer，$http_user_agent
+* $http_user_agent => 客户端agent信息，相当于navigator.userAgent
+* $http_referer => 网页来源, 相当于document.referer
+* $cookie_变量名 => 客户端请求header头中的cookie中具体变量的值
 * $scheme => http方法，比如http或者https，相当于location.protocol
 * $request_method => 客户端请求的动作，通常为GET或POST
-* $limit_rate => 限制连接速率
+* $request_uri => 带有请求参数的uri，不包含主机名，相当于location.pathname和location.search
 * $request_filename => 请求的文件路径，由root或alias指令与URI请求生成
+* $request_body => 请求的body主体内容
+* $limit_rate => 限制连接速率
+* $scheme => http方法，如http或者https
 
 #### error_log 
 * nginx的错误日志，默认为/var/log/nginx/error.log  
@@ -142,3 +166,4 @@ upstream xxxname {
     }
 
 ```
+

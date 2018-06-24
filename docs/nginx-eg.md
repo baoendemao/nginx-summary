@@ -17,6 +17,8 @@
             server_name www.xxx.com; 
             location / { 
                 root   /var/www/www.xxx.com;
+
+                # 配置首页文件，按照从左到右的顺序，如果找不到index.html，则寻找index.htm
                 index  index.html index.htm;
             } 
         }

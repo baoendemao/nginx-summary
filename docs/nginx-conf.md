@@ -167,3 +167,13 @@ upstream xxxname {
 
 ```
 
+#### 设置反盗链
+
+```
+location ~ .*\.(jpg|jpeg|JPG|png|gif|icon)$ {
+        valid_referers blocked www.xxx.com xxx.com;
+        if ($invalid_referer) {
+            return 404;
+        }
+}
+```

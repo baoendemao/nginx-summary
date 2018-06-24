@@ -10,15 +10,11 @@
     * nginx的优点
         * IO多路复用epoll
         * 代码模块化
-
-* [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
-
-* [nginx conf配置文件](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
-
 * nginx相关文件
     * /etc/nginx  => 配置文件目录
     * /etc/nginx/nginx.conf   => 总的配置文件
     * /var/log/nginx   => nginx log
     * /usr/sbin/nginx   => which nginx
-
-* [常用配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
+* [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
+* [nginx conf配置详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
+* [配置示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)

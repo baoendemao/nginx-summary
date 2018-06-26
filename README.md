@@ -18,3 +18,9 @@
 * [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
 * [nginx conf配置详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
 * [配置示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
+* nginx本地测试
+    * 可以通过修改本地hosts文件的方式
+    ```
+        // windows的hosts文件的路径
+        C:\Windows\System32\drivers\etc
+    ```

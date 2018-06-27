@@ -16,8 +16,9 @@
     * /var/log/nginx   => nginx log
     * /usr/sbin/nginx   => which nginx
 * [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
-* [nginx conf配置详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
+* [nginx conf配置文件详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
 * [配置示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
+* [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)
 * nginx本地测试
     * 可以通过修改本地hosts文件的方式
     ```

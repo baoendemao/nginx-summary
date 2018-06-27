@@ -1,6 +1,4 @@
 # nginx-summary 
-
----
 * nginx原理
     * http反向代理服务器
     * 静态资源web服务

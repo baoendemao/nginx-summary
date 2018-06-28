@@ -252,14 +252,37 @@ upstream xxxname {
     }
 
 ```
-
 #### 设置反盗链
 
 ```
 location ~ .*\.(jpg|jpeg|JPG|png|gif|icon)$ {
         valid_referers blocked www.xxx.com xxx.com;
+
+        // 凡是从www.xxx.com, xxx.com跳过来的请求都会return 404
         if ($invalid_referer) {
             return 404;
         }
 }
 ```
+
+#### server虚拟主机配置proxy_set_header
+* proxy_set_header X-Real-IP $remote_addr;
+    * 经过nginx反向代理，服务器取到的客户端的ip地址将会是nginx的ip地址, 但是nginx是可以拿到真实的客户端ip的。<br/>
+    想要服务器端获取用户真实的ip，只需要在nginx的虚拟主机中设置：
+    ```
+    server {
+        listen       12800;
+        server_name  localhost;
+
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    ```
+* proxy_set_header Host $host;
+    * $host即是nginx的ip, 服务器端可以通过log查看到nginx服务器的地址
+* proxy_set_header REMOTE-HOST $remote_addr;
+    * $remote_addr => 客户端ip
+
+* proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+* proxy_set_header Referer $http_referer;
+    * $http_referer => 网页来源

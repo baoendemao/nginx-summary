@@ -4,7 +4,7 @@ yum install nginx
 yum list | grep nginx
 
 ```
-
+#### nginx -h  查看帮助信息
 #### nginx -v  查看版本信息
 #### nginx -t    
 * 检测配置文件是否正确

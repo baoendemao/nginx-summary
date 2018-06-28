@@ -60,6 +60,20 @@
             * 匹配任何以/开头的查询
     * proxy_pass
         * proxy_pass用来设置反向代理
+        ```
+        server { 
+            listen 12800; 
+            server_name www.xxx.com; 
+            location /aa/ { 
+                # 请求localhost:12800/aa/a.html会被代理到http://www.yyy.com/bb/a.html
+                proxy_pass http://www.yyy.com/bb/; 
+            }
+
+            location /bb/ { 
+                proxy_pass http://www.yyy.com$request_uri; 
+            }  
+        }
+        ```
     * root
         * root用来设置静态目录
         * 例如: 
@@ -78,6 +92,11 @@
                 random_index on;
             } 
         ```
+    * rewrite 重写
+    * 什么时候使用proxy_pass, 什么时候使用rewrite
+        * rewrite只针对除了域名和参数之外的url路径部分起作用，即如果url是http://xxx.yyy.com/aa/bb/cc/index.html?a=1&b=2, <br/>
+        rewrite只能针对/aa/bb/cc/index.html重写
+        * 如果想对全部的url做替换，需要使用proxy_pass
 
 #### nginx的变量
 * $host =>  请求Host，如果客户端请求头中没有host，那么这个变量等于为当前请求提供服务的服务器的名称
@@ -149,6 +168,9 @@ location ~ .*\.(html|htm)$ {
 #### nginx负载均衡
 * upstream server
     * 需要配置在server{}之外
+    * server => 配置分流到的服务器， 如果某台服务器down了，能够自动剔除
+    * weight => nginx的轮询比率，分流到不同服务器的权重 => weight越大，权重越大
+    * down => 指的是当前server不参与负载均衡, 用法： server ip1:12800 down;
 
 * 如何配置upstream？
 ```
@@ -202,6 +224,25 @@ http {
     }
 }
 
+```
+
+* 负载均衡如何做到某个客户端固定访问一个服务器，解决session一致的问题 => 可以通过ip_hash
+```
+upstream xxxname {
+    ip_hash;
+    server ip1:12800;
+    server ip2:12801;
+    server ip3:12802;
+}
+```
+* fair => 按照响应时间来分配请求， 响应时间短的服务器会优先分配
+```
+upstream xxxname {
+    server ip1:12800;
+    server ip2:12801;
+    server ip3:12802;
+    fair;
+}
 ```
 
 #### http迁移到https

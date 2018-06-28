@@ -104,7 +104,7 @@
 * $cookie_变量名 => 客户端请求header头中的cookie中具体变量的值
 * $scheme => http方法，比如http或者https，相当于location.protocol
 * $request_method => 客户端请求的动作，通常为GET或POST
-* $request_uri => 带有请求参数的uri，不包含主机名，相当于location.pathname和location.search
+* $request_uri => 带有请求参数的uri，不包含域名，相当于location.pathname和location.search
 * $request_filename => 请求的文件路径，由root或alias指令与URI请求生成
 * $request_body => 请求的body主体内容
 * $limit_rate => 限制连接速率
@@ -149,14 +149,59 @@ location ~ .*\.(html|htm)$ {
 #### nginx负载均衡
 * upstream server
     * 需要配置在server{}之外
+
 * 如何配置upstream？
 ```
-// 每次请求分流到不同的服务器。如果其中某个server down了，或者端口被关(可以通过iptables设置)，负载均衡会检测到并分流到其他的server。
-upstream xxxname {
-    server ip1:12800;
-    server ip2:12801;
-    server ip3:12802;
+// 每次请求分流到不同的服务器。如果流量过大，其中某个server down了，或者端口被关(可以通过iptables设置)，负载均衡会检测到并分流到其他的server。
+
+http {
+    upstream xxxname {
+        server ip1:12800 weight=1;
+        server ip2:12801 weight=2;
+        server ip3:12802 weight=2;
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+        location / {
+            proxy_pass http://xxxname;
+        }
+    }
 }
+
+```
+
+* 配置多个upstream负载均衡
+```
+http {
+    upstream name_one {
+        server ip1:12800 weight=1;
+        server ip2:12801 weight=2;
+        server ip3:12802 weight=2;
+    }
+
+    upstream name_two {
+        server ip1:12803 weight=1;
+        server ip2:12804 weight=2;
+        server ip3:12805 weight=2;
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+        location / {
+            if ($request_uri ~ "^\/one") {
+                proxy_pass http://name_one;
+            }
+
+            if ($request_uri ~ "^\/two") {
+                proxy_pass http://name_two;
+            }
+        }
+    }
+}
+
 ```
 
 #### http迁移到https

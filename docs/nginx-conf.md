@@ -35,6 +35,21 @@
     * if
     * 没有else
     * 没有&&
+    * 如何实现nginx的多条件判断
+    ```
+        set $tag 0;
+        if ($env = "prod") {
+            set $tag 1;
+        }
+
+        if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') {
+            set $tag "${tag}1";
+        }
+        if ($tag = "11") {
+            rewrite ^.+ http://xxxxxx  break;
+        }
+
+    ```
 
 * server块中常用的匹配
     * ~  区分大小写匹配

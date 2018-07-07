@@ -15,6 +15,7 @@
 * [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
 * [nginx conf配置文件详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
 * [配置示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
+* [nginx如何接收ajax请求](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-server.md)
 * [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)
 * nginx本地测试
     * 对于域名的测试可以通过修改本地hosts文件的方式

@@ -16,7 +16,7 @@
 * [nginx conf配置文件详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
 * [配置示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
 * [nginx如何接收ajax请求](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-server.md)
-* [nginx-spider](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-spider.md)
+* [针对爬虫的配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-spider.md)
 * [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)
 * [在windows中如何将nginx安装为系统服务](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-windows.md)
 * [在windows中本地测试nginx域名配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-test.md)

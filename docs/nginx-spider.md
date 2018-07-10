@@ -2,11 +2,22 @@
 ```
     location / {
         if ($http_user_agent ~* "xxspider") {
-
             return 403;
-
         }
     }
+
+
+    或者定义一个变量来判断是否是蜘蛛，在之后的location中引用该变量：
+
+    set $is_spider 0;
+    if ($http_user_agent ~* "xxspider") {
+        set $is_spider 1;
+    }
+
+    if ($is_spider ~* "xxspider") {
+        return 403;
+    }
+
 ```
 
 * 常见的爬虫的userAgent：qihoobot|Baiduspider|360Spider|msnbot||Googlebot|Googlebot-Mobile|Googlebot-Image|Mediapartners-Google|Adsbot-Google|Feedfetcher-Google|Yahoo! Slurp|Yahoo! Slurp China|YoudaoBot|Sosospider|Sogou spider|Sogou web spider|MSNBot|ia_archiver|Tomato Bot

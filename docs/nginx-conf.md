@@ -93,12 +93,22 @@
         * root用来设置静态目录
         * 例如: 
         ```
-            # 请求uri地址是/file/aa.png将会返回文件/var/www/www.xxx.com/file/aa.png
+            # 请求uri地址是/file/aa.png将会返回文件/var/www/www.xxx.com/file/aa.png， location指定的路径file不会被丢弃
             location /file/ {
                 root /var/www/www.xxx.com
             }
 
         ```
+    * alias
+        * alias和root的作用是一样的，不同的是location指定的file路径会被丢弃
+        * 例如
+        ```
+            # 请求uri地址是/file/aa.png将会返回文件/var/www/www.xxx.com/aa.png， location指定的路径file被丢弃
+            location /file/ {
+                alias /var/www/www.xxx.com
+            }
+        ```
+
     * random_index on|off
         ```
             location / { 

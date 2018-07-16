@@ -21,3 +21,4 @@
 * [在windows中如何将nginx安装为系统服务](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-windows.md)
 * [在windows中本地测试nginx域名配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-test.md)
 * [一致性哈希算法](https://github.com/baoendemao/nginx-summary/tree/master/docs/consistent_hash.md)
+* [正向代理和反向代理](https://github.com/baoendemao/nginx-summary/tree/master/docs/agent.md)

@@ -1,3 +1,36 @@
+#### nginx的conf文件结构
+```
+# 全局块
+   ...
+   
+# events块
+events {
+    ...
+}
+
+# http块
+http {
+    # server块
+    server {
+        # location块
+        location {
+            ...
+        }
+        # location块
+        location {
+            ...
+        }
+    }
+
+    # server块
+    server {
+        # location块
+        location {
+            ...
+        }
+    }
+}
+```
 #### http{}
 * log_format
     * 只能配置在http块下

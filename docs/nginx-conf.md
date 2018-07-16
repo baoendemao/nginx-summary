@@ -62,6 +62,9 @@ http {
     error_page 500 502 404 /50x.html
     ```
     
+* resolver 
+    * resolver DNS服务器的ip地址
+    * resolver_timeout time 设置DNS服务器的超时时间
 * set $api_url
 
 * 逻辑控制语句 

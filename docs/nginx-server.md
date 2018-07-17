@@ -4,7 +4,9 @@
 # 允许跨域
 add_header         'Access-Control-Allow-Origin' '*';
 # 允许ajax请求携带cookie
-add_header         "Access-Control-Allow-Credentials" "true";add_header         "Access-Control-Allow-Headers" "x-requested-with,content-type";
+add_header         "Access-Control-Allow-Credentials" "true";
+add_header         "Access-Control-Allow-Headers" "x-requested-with,content-type";
+
 proxy_set_header   Host             $host;
 proxy_set_header   X-Real-IP        $remote_addr;
 proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;

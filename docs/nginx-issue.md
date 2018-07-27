@@ -15,3 +15,15 @@
     ```
     ps -ef | grep nginx  => kill nginx的相关进程， 然后sudo nginx -c /etc/nginx/nginx.conf
     ```
+* nginx: [emerg] unknown log format "main" in /etc/nginx/nginx.conf
+    * 解决方法
+    ```
+    log_fomat的语法：
+    log_format  main  '$remote_addr - [$time_local] "$request" '
+                      '$status $body_bytes_sent '
+
+    且nginx.conf文件中只能有一个log_format的格式生效：
+
+    access_log  /var/log/nginx/access.log  main;
+
+    ```

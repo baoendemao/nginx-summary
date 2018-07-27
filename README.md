@@ -31,4 +31,4 @@
 
 * 其他
     * [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)
-    * [获取不到$request_body](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-request_body.md)
+    * [获取不到$request_body](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-request-body.md)

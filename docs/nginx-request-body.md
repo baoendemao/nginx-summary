@@ -17,7 +17,7 @@
     location / {
         echo_read_request_body;
         # 在log_json的log_format中配置好$request_body字段，
-        # 就可以在access.log中就会在每一条访问记录中获取到$request_body
+        # 就可以在access.log中的每一条访问记录中获取到相应的$request_body
         access_log /var/log/nginx/access.log log_json;   
     }
 

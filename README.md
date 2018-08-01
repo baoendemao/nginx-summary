@@ -23,7 +23,7 @@
     * [nginx的log配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-log-format.md)
     * [nginx配置location示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
     * [针对爬虫的配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-spider.md)
-    * [在windows中本地测试nginx域名配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-test.md)
+    * [修改本地hosts来测试nginx配置中的域名](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-test.md)
     * [nginx如何作为server接收ajax请求](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-server.md)
     * [配置proxy_set_header的host来匹配server](https://github.com/baoendemao/nginx-summary/tree/master/docs/proxy-header-host.md)
     * [配置只允许get方法和post方法](https://github.com/baoendemao/nginx-summary/tree/master/docs/method-get.md)

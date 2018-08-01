@@ -19,6 +19,7 @@
 * 配置和使用
     * [nginx相关命令](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-command.md)
     * [nginx conf配置文件详解](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-conf.md)
+    * [nginx的内置变量](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-variable.md)
     * [nginx的log配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-log-format.md)
     * [nginx配置location示例](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-eg.md)
     * [针对爬虫的配置](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-spider.md)

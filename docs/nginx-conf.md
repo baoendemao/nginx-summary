@@ -123,6 +123,14 @@ http {
             # 请求uri地址是/file/aa.png将会返回文件/var/www/www.xxx.com/file/aa.png， location指定的路径file不会被丢弃
             location /file/ {
                 root /var/www/www.xxx.com
+                index index.html index.htm;
+
+                # try_files 去尝试到网站目录读取用户访问的文件，如果在项目目录中存在以第一个变量名字$uri命名的文件，就直接返回；
+                # 不存在继续读取第二个变量，如果存在，直接返回；不存在直接跳转到第三个参数上；最后是404
+                try_files $uri $uri/ /index.html =404;
+                if ($uri ~* \.(html|htm)) {
+                    expires 0;
+                }
             }
 
         ```

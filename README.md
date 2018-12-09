@@ -1,9 +1,10 @@
 # nginx-summary 
 * nginx
     * http反向代理服务器
-    * 静态资源web服务
+    * 静态资源web服务 => 如html
     * 负载均衡调度器SLB
-    * 动态缓存
+    * API服务
+    * 动态缓存 => 加速访问
     * nginx的优点
         * IO多路复用epoll
         * 代码模块化

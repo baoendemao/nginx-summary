@@ -33,6 +33,8 @@
 * 原理相关
     * [一致性哈希算法](https://github.com/baoendemao/nginx-summary/tree/master/docs/consistent_hash.md)
     * [正向代理和反向代理](https://github.com/baoendemao/nginx-summary/tree/master/docs/agent.md)
+    * [master和worker进程模型](https://github.com/baoendemao/nginx-summary/tree/master/docs/master-worker.md)
+
 
 * 其他
     * [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)

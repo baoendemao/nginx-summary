@@ -28,13 +28,14 @@
     * [nginx如何作为server接收ajax请求](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-server.md)
     * [配置proxy_set_header的host来匹配server](https://github.com/baoendemao/nginx-summary/tree/master/docs/proxy-header-host.md)
     * [配置只允许get方法和post方法](https://github.com/baoendemao/nginx-summary/tree/master/docs/method-get.md)
+    * [nginx在企业中的应用](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-company.md)
 
 
 * 原理相关
     * [一致性哈希算法](https://github.com/baoendemao/nginx-summary/tree/master/docs/consistent_hash.md)
     * [正向代理和反向代理](https://github.com/baoendemao/nginx-summary/tree/master/docs/agent.md)
     * [master和worker进程模型](https://github.com/baoendemao/nginx-summary/tree/master/docs/master-worker.md)
-
+   
 
 * 其他
     * [常见问题解决](https://github.com/baoendemao/nginx-summary/tree/master/docs/nginx-issue.md)

@@ -11,3 +11,6 @@
         * master进程管理worker进程
     * worker进程的职责
         * worker进程来处理请求
+* master进程是通过信号管理worker进程的
+* worker进程之间共享数据是通过共享内存的方式
+    * 多个worker进程之间共享内存的时候，需要加锁

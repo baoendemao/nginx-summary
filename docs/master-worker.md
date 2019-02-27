@@ -12,5 +12,18 @@
     * worker进程的职责
         * worker进程来处理请求
 * master进程是通过信号管理worker进程的
+    * master可以接收的信号如： TERM, INT, QUIT, HUP, USR1, USR2, WINCH
 * worker进程之间共享数据是通过共享内存的方式
     * 多个worker进程之间共享内存的时候，需要加锁
+
+### cpu亲和
+* cpu亲和：把cpu核心和nginx worker进程绑定的方式，把每个worker进程固定在一个cpu上执行，减少cpu切换带来的性能损耗，获取更好的性能。
+* 可以配置worker_cpu_affinity将worker进程和cpu核心绑定在一起, 即配置表示每个worker进程使用的是哪个cpu核心
+
+### nginx如何平滑的reload
+* (1) 向master进程发送HUP信号，即reload命令 
+* (2) master进程校验配置语法是否正确，即nginx -t
+* (3) master进程打开新的监听端口
+* (4) master进程用新的配置启动新的worker进程
+* (5) master进程向老的worker进程发送QUIT信号
+* (6) 老worker进程关闭监听句柄，老的worker进程不去监听新的请求了， 之后结束进程，

@@ -29,3 +29,4 @@
 * $limit_rate => 限制连接速率
 * $scheme => http方法，如http或者https
 * $time_local => 访问时间和时区
+* $http_x_forwarded_for => 表示每一级用户携带的http信息

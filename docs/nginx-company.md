@@ -13,3 +13,11 @@
 * 对于一条请求先到达nginx server，在access log中可以分析这条请求的详情，比如ip，请求时间，请求method, 请求url。
 ### error log
 * 当nginx处理请求异常的时候，在error log中可以查看相应的错误信息。
+### 动态缓存
+* 将一些不怎么改变的内容可以缓存在nginx层，加速对用户的访问。
+
+## tengine
+* 官网： http://tengine.taobao.org/book/index.html
+* (1) tengine在nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。
+* (2) tengine的性能和稳定性已经在大型的网站如淘宝，天猫等得到了很好的检验，它的最终目标是打造一个高效、稳定、安全、易用的web平台。tengine在阿里的生态下，得到了很多考验，修改了nginx的许多主干代码，但是无法跟着nginx的官方版本做同步的升级，
+* (3) 虽然tengine可以使用nginx的第三方模块，但是tengine无法跟着nginx的官方版本做同步的升级，所以有些网友不太推荐使用tengine

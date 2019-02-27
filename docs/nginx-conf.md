@@ -31,7 +31,7 @@ http {
     }
 }
 ```
-#### http{}
+#### http{} => 该指令块表示http大括号内部的都是由http指令模块来进行解析+执行的
 * include
     * nginx读取nginx.conf的时候，同时会读取conf.d目录下面的所有以.conf结尾的所有文件
 
@@ -78,7 +78,7 @@ http {
 
     ```
 
-* server块中常用的匹配
+* server块中常用的正则匹配
     * ~  区分大小写匹配
     * !~  区分大小写不匹配
 
@@ -168,6 +168,13 @@ http {
 #### events
 * worker_connections，默认值为1024
 * 一个进程允许处理的最大连接数
+
+#### sendfile
+* sendfile on  开启高效传输模式
+* sendfile指的是：在unix os中，当请求一个文件的时候，要经过内核空间和用户空间，而nginx使用的是直接内核空间进行sendfile，直接到socket，传送给用户。不通过用户空间。
+
+#### keepalive_timeout
+* keepalive_timeout 65;  保持连接的时间，即超时时间
 
 #### 跨域
 * 从http响应报文中的access-control-allow-origin可以看出服务器端是否允许跨域请求

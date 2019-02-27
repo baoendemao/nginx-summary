@@ -6,6 +6,8 @@
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
+#### nginx -V 
+* 查看nginx编译相关的参数，其中包括了编译的相关模块
 
 #### nginx -s 信号量
 * nginx -s reload -c /etc/nginx/nginx.conf  
